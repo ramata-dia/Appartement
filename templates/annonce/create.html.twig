@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+
+{% block title %}{% endblock %}
+
+{% block body %}
+
+	<div class="container mt-5 w-50 h-50 bg-primary text-light ">
+
+		<div class="row">
+			<div class="col-12 col-md-8 col-lg-6 mx-auto">
+				{{ form_start(form) }}
+				{{ form_row(form.title, {'attr': {'placeholder': "contenue du titre"}})}}
+				{{ form_row(form.desription, {'attr': {'placeholder': "contenue du description"}})}}
+				{{ form_row(form.Introduction, {'attr': {'placeholder': "contenue de l'introduction"}})}}
+				{{ form_row(form.address, {'attr': {'placeholder': "contenue de l'adresse"}})}}
+
+
+				{{ form_widget(form) }}
+
+			</div>
+		</div>
+
+
+		{{ form_end(form) }}
+
+
+	</div>
+
+
+{% endblock %}

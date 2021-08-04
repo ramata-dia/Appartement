@@ -1,0 +1,26 @@
+footer {
+  text-align: center;
+  padding: 3px;
+  margin-top: 30px;
+  background-color:gray;
+  color: white;
+}
+
+
+  .mask-custom {
+    backdrop-filter: contrast(140%) brightness(100%) saturate(100%) sepia(50%)
+      hue-rotate(0deg) grayscale(0%) invert(0%) blur(0px);
+    mix-blend-mode: lighten;
+    background: rgba(161, 44, 199, 0.31);
+    opacity: 1;
+  }
+
+  h5 {
+  background-color: black;
+  color: white;
+}
+p {
+  color: black;
+  text-indent: 30px;
+  text-transform: uppercase;
+}

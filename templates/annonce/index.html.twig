@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Annonce
+{% endblock %}
+
+{% block body %}
+
+
+	<div class="container">
+		<H1>
+			<ta-center>Venez découvrir toutes nos annonces</ta-center>
+		</H1><br/><br/>
+		
+		<div class="row">
+			{% for annonce in annonces %}
+
+				<div class="col-md-4">
+					<div class="card mb-3">
+						<p class="card-header text-center">
+							{% if annonce.rooms < 2 %}Une chambre
+							{% else %}
+								{{annonce.rooms}}
+								Chambres
+							{% endif %}
+							à
+							{{annonce.price | number_format(0, ',', ' ')}}
+							/mois
+							<br/>
+							<small>{{annonce.comments |length }}
+								commentaires</small>
+						</p>
+
+						<img src="{{ asset('uploads/coverImage/' ~ annonce.coverImage )}}" alt="image" style="height:300; width:100%;">
+
+						<div class="card-body">
+
+
+							<h5>{{annonce.title}}</h5>
+
+							<p class="card-text">{{annonce.introduction |u.truncate(100, '...')}}</p>
+						</div>
+
+						<div class="card-body">
+							<a href="{{ path('annonce_show', {'slug':annonce.}) }}" class="card-link btn btn-primary">Détails...</a>
+						</div>
+						<div class="card-footer text-muted text-center">
+							<i class="fas fa-map-marker">
+								{{annonce.address}}
+							</i>
+							<br>
+							<small>{{annonce.createdAt |ago(locale='fr')}}</small>
+						</div>
+					</div>
+
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+
+
+{% endblock %}
+

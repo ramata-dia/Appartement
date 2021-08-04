@@ -1,19 +1,84 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {# Run `composer require symfony/webpack-encore-bundle`
-           and uncomment the following Encore helpers to start using Symfony UX #}
-        {% block stylesheets %}
-            {#{{ encore_entry_link_tags('app') }}#}
-        {% endblock %}
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}Welcome!
+			{% endblock %}
+		</title>
+		{# Run `composer require symfony/webpack-encore-bundle`
+		           and uncomment the following Encore helpers to start using Symfony UX #}
+		{% block stylesheets %}
+			{#{{ encore_entry_link_tags('app') }}#}
+			<!-- JavaScript Bundle with Popper --><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"> </script>
+			<link rel="stylesheet" href="/css/bootstrap.min.css">
+			<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
+			<link rel="stylesheet" href="/css/style.css">
 
-        {% block javascripts %}
-            {#{{ encore_entry_script_tags('app') }}#}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
-</html>
+		{% endblock %}
+
+		{% block javascripts %}
+			{#{{ encore_entry_script_tags('app') }}#}
+			<script src="js/jquery.js"></script>
+			<script src="js/popper.min.js"></script>
+
+			<script src="js/bootstrap.min.js"></script>
+		{% endblock %}
+	</head>
+
+	<body>
+		<header>
+
+			<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+				<div class="container-fluid">
+					<a class="navbar-brand" href="#">KayDeuk</a>
+					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+
+					<div class="collapse navbar-collapse" id="navbarColor01">
+						<ul class="navbar-nav mr-auto">
+							<li class="nav-item active">
+								<a class="nav-link" href="#">Acceuil</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="{{path('annonce')}}">annonce</a>
+							</li>
+							<li class="nav-item active">
+            <a class="nav-link" href="{{path('annonce_new')}}">Publier Une annonce</a>
+
+							</li>
+							<li class="nav-item active">
+								<a class="nav-link" href="#">Contact</a>
+							</li>
+						</li>
+
+					</ul>
+					<ul class="navbar-nav ml-auto">
+						<li class="nav-item">
+							<a href="{{path('app_register')}}" class="nav-link">Inscription</a>
+						</li>
+						<li class="nav-item">
+							<a href="#" class="nav-link">Connexion</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</body>
+</html></header>
+    {% for message in app.flashes('success') %}
+     <div class="alert alert-success">
+	{{ message }}
+       </div>
+{% endfor %}
+{% block body %}{% endblock %}
+{% for flashError in app.flashes('verify_email_error') %}
+	<div class="alert alert-danger" role="alert">{{ message }}</div>
+{% endfor %}
+
+<footer>
+<p>Author: simplon</p>
+<p>
+	<a href="mailto:hege@example.com">hege@example.com</a>
+</p></footer></body></html>

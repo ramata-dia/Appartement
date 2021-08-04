@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+
+{% block body %}
+
+
+	<div class="container-fluid">
+		<h1>liste des Annonces</h1>
+
+		<div class="row mt-5">
+
+
+			<table class="table table-lg table-hover">
+
+				<thead>
+					<tr>
+						<th>title</th>
+						<th>price</th>
+						<th>disponiblite</th>
+						<th>Action</th>
+
+					</tr>
+
+				</thead>
+				<tbody>
+					{% for annonce in annonce %}
+						<tr>
+							<td class="text-break">{{annonce.title}}</td>
+
+							<td class="text-break">{{annonce.price}}</td>
+
+							<td>
+								<div class="form-check">
+									{% if annonce.isAvailable == 1  %}
+										<input type="checkbox" class="form-check-input" name="" id="" value="true" checked>
+									{% else %}
+
+										<input type="checkbox" class="form-check-input" name="" id="" value="true" unchecked>
+
+
+									{% endif %}
+
+								</div>
+							</td>
+
+
+							<td class="text-break">
+								<a href="{{ path('admin_annonce', { slug: annonce.slug }) }}">
+									<span class="fa fa-pencil">
+										<i class=" far fa-trash-alt"></i>
+
+									</span>
+
+								</a>
+
+
+								<a href="{{ path('annonce_edit', { slug: annonce.slug }) }}">
+									<span class="fa fa-pencil">
+										<i class="fas fa-edit"></i>
+
+									</span>
+
+								</a>
+
+							</td>
+						</tr>
+					{% endfor %}
+
+
+				</tbody>
+
+			</table>
+
+
+		</div>
+
+</div>
+	{% endblock %}

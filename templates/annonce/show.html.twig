@@ -1,0 +1,110 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Annonce
+{% endblock %}
+
+{% block body %}
+	<div class="container my-5 py-5" style="background-image: url('{{annonce.coverImage}}'); background-repeat: no-repeat; height:350px; color:white; font-size:25px; text-shadow:3px 3px 4px white;">
+		<div class="mask rgba-gradient align-items-center;">
+			<div ="card-body ">
+				<p class="card-title text-center ">{{annonce.title}}</p>
+				<p class="card-title text-center">{{annonce.Introduction}}</p>
+				<p class="card-text text-center">{{annonce.rooms }}
+					Chambre à
+					{{annonce.Price | number_format(0, ',', ' ')}}
+					FCFA/Mois</p>
+				<p class="card-text text-center">{{annonce.Address}}</p>
+
+			</div>
+		</div>
+	</div>
+
+	<div class="container my-5">
+		<h2>Description</h2>
+		<p>{{annonce.desription}}</p>
+	</div>
+
+	<div class="container">
+		<h3 style="margin-top: 2em;">Commentaires</h3>
+
+		<div class="row d-inline-flex">
+
+			<div class="col-md-8">
+				{% for comment in annonce.comments %}
+					<div class="alert alert-info">
+						<strong>{{comment.author}}
+							a écrit</strong>
+						<p>{{comment.content}}</p>
+					</div>
+				{% endfor %}
+			</div>
+
+			<div class="col-md-4">
+				<div class="list-group">
+
+					<div class="d-flex w-100 justify-content-between">
+						<h5>Auteur de l'annonce</h5>
+					</div>
+					<img src="/image/auteur.jpg" alt="" style='width:50px;'>
+					<p>Prénom:<strong>
+							Mariame
+						</strong>
+					</p>
+					<p>Nom:
+						<strong>KA</strong>
+					</p>
+					<p>Adresse:
+						<strong>GUEULE TAPE</strong>
+					</p>
+					<p>Tel:
+						<strong>778112018</strong>
+					</p>
+					<p>Email:
+						<strong>mariaka26@gmail.com</strong>
+					</p>
+
+
+				</div>
+			</div>
+
+
+		</div>
+		<div class="container">
+			<div class="row">
+				{% for image in annonce.images %}
+					<div class="col-md-4">
+						<div class="card">
+							<div class="card-body">
+								<img src="{{image.imageUrl}}" alt="" class="card-img w-100%">
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+
+		</div>
+		<div class="card-body">
+			<a href="{{ path('annonce_edit', {'slug':annonce.slug}) }}" class="card-link btn btn-primary">Modifier</a>
+
+			<a href="{{ path('annonce_delete', {'slug':annonce.slug}) }}" class="card-link btn btn-primary">Supprimer</a>
+		</div>
+
+		<div class="col-sm-6">
+
+			{{ form_start(commentForm)}}
+			{{ form_row(commentForm.mail, )}}
+
+
+			{{ form_row(commentForm.Author)}}
+
+
+			{{ form_row(commentForm.content) }}
+
+			<input type="submit" class="btn btn-primary" value="Enregistrer"/>
+
+		</div>
+	</div>
+	{{ form_end(commentForm) }}
+
+
+</div></div>{% endblock %}
