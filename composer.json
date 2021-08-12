@@ -98,9 +98,13 @@
         ],
         "compile": [
           "php bin/console doctrine:migrations:migrate",
+<<<<<<< HEAD
            "php bin/console doctrine:fixtures:load --no-interaction --env=PROD"
 
 
+=======
+            "php bin/console doctrine:fixtures:load --no-interaction --env=PROD"
+>>>>>>> 6f8342477e2c63311642f35fdf1d0360552f3a17
        ]
 
 
