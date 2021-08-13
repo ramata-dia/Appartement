@@ -7,16 +7,16 @@
 
 
 	<div class="container">
-		<H1>
+		<h3>
 			<ta-center>Venez découvrir toutes nos annonces</ta-center>
-		</H1><br/><br/>
+		</h3><br/><br/>
 		
 		<div class="row">
 			{% for annonce in annonces %}
 
 				<div class="col-md-4">
 					<div class="card mb-3">
-						<p class="card-header text-center">
+						<h3 class="card-header text-center">
 							{% if annonce.rooms < 2 %}Une chambre
 							{% else %}
 								{{annonce.rooms}}
@@ -28,16 +28,16 @@
 							<br/>
 							<small>{{annonce.comments |length }}
 								commentaires</small>
-						</p>
+						</h3>
 
 						<img src="{{ asset('uploads/coverImage/' ~ annonce.coverImage )}}" alt="image" style="height:300; width:100%;">
 
 						<div class="card-body">
 
 
-							<h5>{{annonce.title}}</h5>
+							<h1>{{annonce.title}}</h1>
 
-							<p class="card-text">{{annonce.introduction |u.truncate(100, '...')}}</p>
+							<h3 class="card-text">{{annonce.introduction |u.truncate(100, '...')}}</h3>
 						</div>
 
 						<div class="card-body">

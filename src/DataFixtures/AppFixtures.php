@@ -27,7 +27,7 @@ class AppFixtures extends Fixture
                 ->setDesription($faker->text(200))
                 ->setPrice(mt_rand(30000, 60000))
                 ->setAddress($faker->address())
-                ->setCoverImage("182a0e69752fb117763d03e9450ac424.jpg")
+                ->setCoverImage("0e3f5e6b2503ab7dbd4281affd60394b.jpg")
                 ->setRooms(mt_rand(0, 5))
                 ->setIsAvailable(mt_rand(0, 1))
                 ->setCreatedAt($faker->datetimeBetween('-3 month', 'now'));
